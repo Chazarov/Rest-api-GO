@@ -1,4 +1,4 @@
-package servise
+package service
 
 import "github.com/Chazarov/rest-app/pkg/repository"
 
