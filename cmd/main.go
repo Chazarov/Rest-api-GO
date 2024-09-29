@@ -7,6 +7,7 @@ import (
 	"github.com/Chazarov/rest-app/pkg/handler"
 	"github.com/Chazarov/rest-app/pkg/repository"
 	"github.com/Chazarov/rest-app/pkg/service"
+	"github.com/joho/godotenv"
 
 	_ "github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
@@ -19,6 +20,10 @@ import (
 func main() {
 	if err := initConfig(); err != nil {
 		log.Fatalf("!!! error initializing configs: %s", err.Error())
+	}
+
+	if err := godotenv.Load(); err != nil {
+		log.Fatalf("!!! error with loading env variables: %s", err.Error())
 	}
 
 	db, err := repository.NewPostgresDB(repository.Config{
