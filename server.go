@@ -4,6 +4,13 @@ import (
 	"context"
 	"net/http"
 	"time"
+
+	_ "github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/database/sqlite3"
+	_ "github.com/golang-migrate/migrate/v4/source/github"
+	_ "github.com/lib/pq"
+	// _ "github.com/lib/pq"
 )
 
 type Server struct {

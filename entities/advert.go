@@ -1,13 +1,15 @@
 package project
 
-type Advert struct {
-	Id          int    `json:"~"`
+type AdvertItem struct {
+	Id          int    `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
+	ImagesPath  string `json:"imagesPath"`
+	MerchantID  int    `json:"merchantId"`
 }
 
-type AdvertsList struct {
-	Id         int
-	MerchantID int
-	AdvertID   int
+type MerchantAdvert struct {
+	Id         int `json:"id"`
+	MerchantID int `json:"merchantId"`
+	AdvertID   int `json:"advertId"`
 }
