@@ -1,8 +1,12 @@
 package repository
 
-import "github.com/jmoiron/sqlx"
+import (
+	project "github.com/Chazarov/rest-app/entities"
+	"github.com/jmoiron/sqlx"
+)
 
 type Authorisation interface {
+	CreateUser(user project.User) (int, error)
 }
 
 type Advertisement interface {
@@ -18,5 +22,7 @@ type Repository struct {
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
-	return &Repository{}
+	return &Repository{
+		Authorisation: NewAuthPostgres(db),
+	}
 }

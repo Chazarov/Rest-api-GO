@@ -1,8 +1,12 @@
 package service
 
-import "github.com/Chazarov/rest-app/pkg/repository"
+import (
+	project "github.com/Chazarov/rest-app/entities"
+	"github.com/Chazarov/rest-app/pkg/repository"
+)
 
 type Authorisation interface {
+	CreateUser(user project.User) (int, error)
 }
 
 type Advertisement interface {
@@ -18,5 +22,7 @@ type Service struct {
 }
 
 func NewService(repos *repository.Repository) *Service {
-	return &Service{}
+	return &Service{
+		Authorisation: NewAuthService(repos.Authorisation),
+	}
 }
