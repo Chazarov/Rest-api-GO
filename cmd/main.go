@@ -18,6 +18,16 @@ import (
 
 // @title REST API Documentation
 // @version 1.0
+// @description This is a REST API for managing users, authentication, and items.
+// @termsOfService http://example.com/terms/
+
+// @contact.name API Support
+// @contact.url http://www.example.com/support
+// @contact.email support@example.com
+
+// @license.name MIT
+// @license.url https://opensource.org/licenses/MIT
+
 // @host localhost:8080
 // @BasePath /api
 
