@@ -14,10 +14,3 @@ CREATE TABLE advert_items
     images_path     VARCHAR(500),
     user_id         INT REFERENCES users (id) ON DELETE CASCADE                 NOT NULL
 );
-
-CREATE TABLE advert_lists
-(
-    id              SERIAL PRIMARY KEY                                                  NOT NULL,
-    user_id         INT REFERENCES users (id) ON DELETE CASCADE                         NOT NULL,
-    advert_id       INT REFERENCES advert_items (id) ON DELETE CASCADE                  NOT NULL
-);

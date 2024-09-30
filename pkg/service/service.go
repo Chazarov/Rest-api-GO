@@ -7,22 +7,22 @@ import (
 
 type Authorisation interface {
 	CreateUser(user project.User) (int, error)
+	GenerateToken(username, password string) (string, error)
+	ParseToken(token string) (int, error)
 }
 
-type Advertisement interface {
-}
-
-type AdvertisementList interface {
+type Adverts interface {
+	Create(item project.AdvertItem) (int, error)
 }
 
 type Service struct {
 	Authorisation
-	Advertisement
-	AdvertisementList
+	Adverts
 }
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
 		Authorisation: NewAuthService(repos.Authorisation),
+		Adverts:       NewAdvertsService(repos.Adverts),
 	}
 }

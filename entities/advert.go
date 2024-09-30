@@ -5,11 +5,5 @@ type AdvertItem struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	ImagesPath  string `json:"imagesPath"`
-	MerchantID  int    `json:"merchantId"`
-}
-
-type MerchantAdvert struct {
-	Id         int `json:"id"`
-	MerchantID int `json:"merchantId"`
-	AdvertID   int `json:"advertId"`
+	UserId      int    `json:"userId" binding:"required"`
 }
