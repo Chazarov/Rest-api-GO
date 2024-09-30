@@ -1,32 +1,23 @@
 CREATE TABLE users
 (
-    id              SERIAL PRIMARY KEY      NOT NULL UNIQUE,
+    id              SERIAL PRIMARY KEY      NOT NULL,
     name            VARCHAR(255)            NOT NULL,
     username        VARCHAR(255)            NOT NULL UNIQUE,
     password_hash   VARCHAR(255)            NOT NULL 
 );
 
-CREATE TABLE merchants
-(
-    id              SERIAL PRIMARY KEY                              NOT NULL UNIQUE,
-    user_id         INT REFERENCES users (id) ON DELETE CASCADE     NOT NULL,
-    merchant_id     INT                                             NOT NULL UNIQUE,
-    description     TEXT ,
-);
-
 CREATE TABLE advert_items
 (
-    id              SERIAL PRIMARY KEY                                          NOT NULL UNIQUE,
+    id              SERIAL PRIMARY KEY                                          NOT NULL,
     title           VARCHAR(255)                                                NOT NULL,
-    description     TEXT ,
+    description     TEXT,
     images_path     VARCHAR(500),
-    merchant_id     INT REFERENCES merchants (merchant_id) ON DELETE CASCADE    NOT NULL
+    user_id         INT REFERENCES users (id) ON DELETE CASCADE                 NOT NULL
 );
 
-CREATE TABLE merchant_adverts
+CREATE TABLE advert_lists
 (
-    id              SERIAL PRIMARY KEY                                                  NOT NULL UNIQUE,
-    merchant_id     INT REFERENCES  merchants (id) ON DELETE CASCADE                    NOT NULL,
-    advert_id       INT REFERENCES advert_items (id) ON DELETE CASCADE                  NOT NULL,
+    id              SERIAL PRIMARY KEY                                                  NOT NULL,
+    user_id         INT REFERENCES users (id) ON DELETE CASCADE                         NOT NULL,
+    advert_id       INT REFERENCES advert_items (id) ON DELETE CASCADE                  NOT NULL
 );
-

@@ -7,6 +7,7 @@ import (
 
 type Authorisation interface {
 	CreateUser(user project.User) (int, error)
+	GetUser(username, password string) (project.User, error)
 }
 
 type Advertisement interface {
